@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { ErrorDetail } from "../components/ErrorDetail";
 
 export const PokemonDetail = () => {
   const [pokemon, setPokemon] = useState(null);
   const [error, setError] = useState(false);
   const navigate = useNavigate();
+  const navigate2 = useNavigate();
   //   const { sprites } = pokemon;
   //   console.log("sprites", sprites);
   //   const { back_default, back_shiny, front_default, front_shiny } = sprites;
@@ -12,6 +14,7 @@ export const PokemonDetail = () => {
   const goBack = () => {
     navigate("/");
   };
+
   const params = useParams();
   const { pokemonId } = params;
 
@@ -28,7 +31,10 @@ export const PokemonDetail = () => {
       .then((pokemon) => {
         setPokemon(pokemon);
       })
-      .catch((error) => {});
+      .catch((error) => {
+        console.log("error-->", error);
+        setError(true);
+      });
   }, []);
 
   return (
@@ -67,7 +73,7 @@ export const PokemonDetail = () => {
           </div>
         </>
       ) : (
-        <>Loading</>
+        <div>{error ? <ErrorDetail /> : <div>Loading...</div>}</div>
       )}
     </div>
   );

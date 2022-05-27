@@ -1,4 +1,3 @@
-// import { HomePage } from "./pages/HomePage";
 import { PokemonsPage } from "./pages/PokemonsPage";
 import { Routes, Route } from "react-router-dom";
 import { Error404 } from "./pages/Error404";
