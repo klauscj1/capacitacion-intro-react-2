@@ -31,8 +31,8 @@ export const PokemonDetail = () => {
       .then((pokemon) => {
         setPokemon(pokemon);
       })
-      .catch((error) => {
-        console.log("error-->", error);
+      .catch((e) => {
+        console.log("error-->", e);
         setError(true);
       });
   }, []);
